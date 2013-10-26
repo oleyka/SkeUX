@@ -1,4 +1,4 @@
-/* ditch Verdana and Arial */
+/* ditch jQuery's Verdana and Arial */
 .ui-widget,
 .ui-widget button {
 	font-family: UbuntuC, "Arial Narrow", sans-serif;
@@ -10,6 +10,20 @@
 .ui-widget-header .ui-priority-primary {
 	font-weight: normal;
 	font-family: UbuntuR, Arial, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: normal;
+	font-family: UbuntuR, Arial, sans-serif;
+}
+
+/* Vertical buttonset */
+.skeux-buttonset-vertical .ui-button {
+	display: block;
+	margin-bottom: -1px;
+}
+.skeux-buttonset-vertical .ui-button span {
+	display: inline-block;
 }
 
 /* Vertical tabs */
@@ -51,4 +65,69 @@
 	cursor: pointer;
 }
 
+/* Slider marks */
+.skeux-slider-horizontal-wrapper,
+.skeux-slider-vertical-wrapper {
+	font-family: UbuntuC, "Arial Narrow", sans-serif;
+	font-size: 12px;
+	position: relative;
+}
+.skeux-slider-horizontal-wrapper { 
+	margin: 0.5em auto;
+	padding-bottom: 20px; 
+}
+.skeux-slider-vertical-wrapper { 
+	margin: 0.5em 0 0 0;
+	width: 48px;
+}
+
+.skeux-slider-horizontal-wrapper .skeux-slider-mark-min {
+	background-image: url('skeux-images/slider-horizontal-ticks-888888.png');
+	background-position: -32px 0;
+	background-repeat: repeat-y;
+	padding-top: 6px;
+	position: absolute;
+	left: -16px; bottom: 0;
+	text-align: center;
+	width: 32px;
+}
+ .skeux-slider-vertical-wrapper .skeux-slider-mark-min {
+	background-image: url('skeux-images/slider-vertical-ticks-888888.png');
+	background-position: 0 -42px;
+	background-repeat: repeat-x;
+	padding-left: 8px;
+	position: absolute;
+	right: 0; bottom: -5px;
+	text-align: left;
+	width: 25px;
+} 
+.skeux-slider-horizontal-wrapper .skeux-slider-mark-max {
+	background-image: url('skeux-images/slider-horizontal-ticks-888888.png');
+	background-position: -32px 0;
+	background-repeat: repeat-y;
+	padding-top: 6px;
+	position: absolute;
+	right: -15px; bottom: 0;
+	text-align: center;
+	width: 32px;
+}
+.skeux-slider-vertical-wrapper .skeux-slider-mark-max {
+	background-image: url('skeux-images/slider-vertical-ticks-888888.png');
+	background-position: 0 -42px;
+	background-repeat: repeat-x;
+	padding-left: 8px;
+	position: absolute;
+	right: 0; top: -5px;
+	text-align: left;
+	width: 25px;
+}
+.skeux-slider-horizontal-wrapper .skeux-slider-mark-tick {
+	background-image: url('skeux-images/slider-horizontal-ticks-888888.png');
+	background-position: 0 0;
+	position: absolute;
+	bottom: 4px;
+	width: 32px; height: 12px;
+}
+
 /*** TEMP ***/
+
