@@ -9,37 +9,23 @@ function skeux_max_width(el, subSet) {
 	return Math.max.apply(null, wSet);
 }
 
-/* Drop corners on all descendants; not pretty yet */
-function skeux_drop_corners() {
-	$('.skeux-no-corners').each(function() {
-		$(this).removeClass('ui-corner-all ui-corner-top ui-corner-bottom ui-corner-left ui-corner-right ui-corner-tl ui-corner-tr ui-corner-br ui-corner-bl');
-	});
-	$('.skeux-no-corners .ui-corner-all').each(function() {
-		$(this).removeClass('ui-corner-all');
-	});
-	$('.skeux-no-corners .ui-corner-top').each(function() {
-		$(this).removeClass('ui-corner-top');
-	});
-	$('.skeux-no-corners .ui-corner-bottom').each(function() {
-		$(this).removeClass('ui-corner-bottom');
-	});
-	$('.skeux-no-corners .ui-corner-left').each(function() {
-		$(this).removeClass('ui-corner-left');
-	});
-	$('.skeux-no-corners .ui-corner-right').each(function() {
-		$(this).removeClass('ui-corner-right');
-	});
-	$('.skeux-no-corners .ui-corner-tl').each(function() {
-		$(this).removeClass('ui-corner-tl');
-	});
-	$('.skeux-no-corners .ui-corner-tr').each(function() {
-		$(this).removeClass('ui-corner-tr');
-	});
-	$('.skeux-no-corners .ui-corner-br').each(function() {
-		$(this).removeClass('ui-corner-br');
-	});
-	$('.skeux-no-corners .ui-corner-bl').each(function() {
-		$(this).removeClass('ui-corner-bl');
+/* Drop corners on all descendants of $el's; not pretty yet */
+function skeux_drop_corners($el) {
+	var classes = [ 'ui-corner-all', 
+					'ui-corner-top', 'ui-corner-bottom',
+					'ui-corner-left', 'ui-corner-right',
+					'ui-corner-tl', 'ui-corner-tr',
+					'ui-corner-br', 'ui-corner-bl' ],
+		i;
+	$el = typeof $el !== 'undefined' ? $el : $('.skeux-no-corners');
+
+	$el.each(function() {
+		for (i in classes) {
+			$(this).find('.' + classes[i]).each(function() {
+				$(this).removeClass(classes[i]);
+			});
+			$el.removeClass(classes[i]);
+		}
 	});
 }
 

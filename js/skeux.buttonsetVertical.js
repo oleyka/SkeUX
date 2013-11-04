@@ -1,7 +1,14 @@
 //		jQuery.ui.buttonset.prototype._init.call(this);
 
-$.widget("skeux.buttonsetUx", jQuery.ui.buttonset, {
-	version: "0.0.1",
+// extension of jQuery buttonset widget, additional options:
+// align: { left, right, center }
+// 		default = center
+// orientation: { vertical, horizontal, default } 
+// 		default invokes the standard refresh() on _init
+// corners: { 'yes' / 'no' }
+// 		default = yes
+$.widget("ui.buttonset", jQuery.ui.buttonset, {
+	skeux_version: "0.0.1",
 
 	_create: function() {
 		switch(this.options.orientation) {
@@ -30,11 +37,31 @@ $.widget("skeux.buttonsetUx", jQuery.ui.buttonset, {
 		}
 	},
 
-	refresh: function() {
+	_init: function() {
+		if (this.options.orientation === 'vertical' ||
+			this.options.orientation === 'horizontal') {
+			this.refresh_ux();
+		} else {
+			this.refresh();
+			if (!this.options.corners) {
+				skeux_drop_corners(this.element);
+			}
+		}
+
+		if (this.options.align) { 
+			this.element.find( ".ui-button" )
+				.css('textAlign', this.options.align)
+				.end(); 
+		}
+	},
+
+	refresh_ux: function() {
+		var corners = this.options.corners,
+			rtl = this.element.css( "direction" ) === "rtl",
+			w;
 
 		switch(this.options.orientation) {
 		case 'vertical':
-			var corners = this.options.corners;
 			this.buttons = this.element.find( this.options.items )
 				.filter( ":ui-button" )
 					.button( "refresh" )
@@ -57,14 +84,11 @@ $.widget("skeux.buttonsetUx", jQuery.ui.buttonset, {
 					.end()
 				.end();
 
-			var w = skeux_max_width(this.element, '.ui-button-text');
+			w = skeux_max_width(this.element, '.ui-button-text');
 			this.element.find('.ui-button').width(w);
 			this.element.width(skeux_max_width(this.element, ':ui-button'));
 			break;
 		case 'horizontal':
-			var corners = this.options.corners;
-			var rtl = this.element.css( "direction" ) === "rtl";
-
 			this.buttons = this.element.find( this.options.items )
 				.filter( ":ui-button" )
 					.button( "refresh" )
@@ -86,18 +110,12 @@ $.widget("skeux.buttonsetUx", jQuery.ui.buttonset, {
 					.end()
 				.end();
 
-			var w = skeux_max_width(this.element, '.ui-button-text');
+			w = skeux_max_width(this.element, '.ui-button-text');
 			this.element.find('.ui-button').width(w);
 //			this.element.width(skeux_max_width(this.element, ':ui-button'));
 			break;
-		case 'inherit':
 		default:
 			jQuery.ui.buttonset.prototype.refresh.call(this);
-		}
-		if (this.options.align) { 
-			this.element.find( ".ui-button-text" )
-				.css('textAlign', this.options.align)
-				.end(); 
 		}
 	},
 
@@ -107,7 +125,7 @@ $.widget("skeux.buttonsetUx", jQuery.ui.buttonset, {
 			.map(function() {
 				return $( this ).button( "widget" )[ 0 ];
 			})
-				.removeClass("ui-corner-left ui-corner-right ui-corner-top ui-corner-bottom skeux-buttonset-v-button skeux-buttonset-v-button-right skeux-buttonset-v-button-last")
+				.removeClass("ui-corner-left ui-corner-right ui-corner-top ui-corner-bottom skeux-buttonset-v-button skeux-buttonset-v-button-first skeux-buttonset-v-button-last skeux-buttonset-h-button skeux-buttonset-h-button first skeux-buttonset-h-button-last")
 			.end()
 			.button( "destroy" );
 	}
