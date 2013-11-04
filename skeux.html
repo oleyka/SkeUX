@@ -7,6 +7,7 @@
 	<link href="css/skeux/skeux-core.css" rel="stylesheet">
 	<script src="js/jquery-1.9.1.js"></script>
 	<script src="js/jquery-ui-1.10.3.custom.js"></script>
+	<script src="js/skeux.buttonsetVertical.js"></script>
 	<script src="js/skeux.js"></script>
 	<script>
 	$(function() {
@@ -95,7 +96,19 @@
 
 		$('#tabs_ux').tabs();
 		$( "#button_ux" ).button();
-		$( "#radioset_ux" ).buttonset();
+		// SkeUX init for the vertical buttonset
+		$( "#radioset_ux" ).buttonsetUx({
+			orientation: 'v',
+			align: 'right'
+		});
+		$( "#radioset_ux2" ).buttonsetUx({
+			orientation: 'h',
+			align: 'left'
+		});
+		$( "#radioset_ux3" ).buttonsetUx({
+			orientation: '',
+			align: 'right'
+		});
 	
 		$( "#slider_ux1" ).slider({
 			range: true,
@@ -246,10 +259,11 @@
 <!-- Button -->
 <h2 class="demoHeaders">Button</h2>
 <button id="button">A button element</button>
+
 <form style="margin-top: 1em;">
 	<div id="radioset">
 		<input type="radio" id="radio1" name="radio"><label for="radio1">Choice 1</label>
-		<input type="radio" id="radio2" name="radio" checked="checked"><label for="radio2">Choice 2</label>
+		<input type="radio" id="radio2" name="radio" checked="checked"><label for="radio2">Choice 2000</label>
 		<input type="radio" id="radio3" name="radio"><label for="radio3">Choice 3</label>
 	</div>
 </form>
@@ -257,11 +271,27 @@
 </td><td>
 <h2 class="demoHeaders">Button</h2>
 <button id="button_ux">A button element</button>
-<form style="margin-top: 1em;">
-	<div id="radioset_ux" class="skeux-buttonset-vertical">
+<form style="margin: 1em 0;">
+	<div id="radioset_ux">
 		<input type="radio" id="radio1_ux" name="radio"><label for="radio1_ux">Choice 1</label>
-		<input type="radio" id="radio2_ux" name="radio" checked="checked"><label for="radio2_ux">Choice 2</label>
+		<input type="radio" id="radio2_ux" name="radio" checked="checked"><label for="radio2_ux">Choice 20000</label>
 		<input type="radio" id="radio3_ux" name="radio"><label for="radio3_ux">Choice 3</label>
+	</div>
+</form>
+	
+<form style="margin: 1em 0;">
+	<div id="radioset_ux2">
+		<input type="radio" id="radio1_ux2" name="radio"><label for="radio1_ux2">Choice 1</label>
+		<input type="radio" id="radio2_ux2" name="radio" checked="checked"><label for="radio2_ux2">Choice 20000</label>
+		<input type="radio" id="radio3_ux2" name="radio"><label for="radio3_ux2">Choice 3</label>
+	</div>
+</form>
+
+<form style="margin: 1em 0;">
+	<div id="radioset_ux3">
+		<input type="radio" id="radio1_ux3" name="radio"><label for="radio1_ux3">Choice 1</label>
+		<input type="radio" id="radio2_ux3" name="radio" checked="checked"><label for="radio2_ux3">Choice 20000</label>
+		<input type="radio" id="radio3_ux3" name="radio"><label for="radio3_ux3">Choice 3</label>
 	</div>
 </form>
 </td></tr>
@@ -276,7 +306,7 @@
 		<li><a href="#tabs-2">Second</a></li>
 		<li><a href="#tabs-3">Third</a></li>
 	</ul>
-	<div id="tabs-1">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+	<div id="tabs-1">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. And then some more, and more, and more... ....<br></div>
 	<div id="tabs-2">Phasellus mattis tincidunt nibh. Cras orci urna, blandit id, pretium vel, aliquet ornare, felis. Maecenas scelerisque sem non nisl. Fusce sed lorem in enim dictum bibendum.</div>
 	<div id="tabs-3">Nam dui erat, auctor a, dignissim quis, sollicitudin eu, felis. Pellentesque nisi urna, interdum eget, sagittis et, consequat vestibulum, lacus. Mauris porttitor ullamcorper augue.</div>
 </div>

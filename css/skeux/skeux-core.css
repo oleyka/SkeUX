@@ -18,25 +18,30 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Vertical buttonset */
-.skeux-buttonset-vertical .ui-button {
+.skeux-buttonset-v .ui-button {
 	display: block;
 	margin-bottom: -1px;
 }
-.skeux-buttonset-vertical .ui-button span {
+.skeux-buttonset-h .ui-button {
+	display: inline-block;
+	margin-right: -4px;
+}
+.skeux-buttonset-h .ui-button .ui-button-text,
+.skeux-buttonset-v .ui-button .ui-button-text {
 	display: inline-block;
 }
 
 /* Vertical tabs */
-.ui-tabs .skeux-tabs-nav-horizontal {}
+.ui-tabs .skeux-tabs-nav-h {}
 
-.ui-tabs .skeux-tabs-nav-vertical {
+.ui-tabs .skeux-tabs-nav-v {
 	margin: .2em 0 .2em .2em;
 	padding: .2em 0 0 .2em;
 	position: absolute;
 	top: 0;
 	left: 0;
 }
-.ui-tabs .skeux-tabs-nav-vertical li {
+.ui-tabs .skeux-tabs-nav-v li {
 	border-width: 1px;
 	border-right-width: 0;
 	clear: left;
@@ -46,42 +51,42 @@ h1, h2, h3, h4, h5, h6 {
 	position: relative;
 	white-space: nowrap;
 }
-.ui-tabs .skeux-tabs-nav-vertical li a {
+.ui-tabs .skeux-tabs-nav-v li a {
 	display: block;
 	padding: .5em 1em;
 	text-decoration: none;
 }
-.ui-tabs .skeux-tabs-nav-vertical li.ui-tabs-active {
+.ui-tabs .skeux-tabs-nav-v li.ui-tabs-active {
 	margin-right: -1px;
 	padding-right: 1px;
 }
-.ui-tabs .skeux-tabs-nav-vertical li.ui-tabs-active a,
-.ui-tabs .skeux-tabs-nav-vertical li.ui-state-disabled a,
-.ui-tabs .skeux-tabs-nav-vertical li.ui-tabs-loading a {
+.ui-tabs .skeux-tabs-nav-v li.ui-tabs-active a,
+.ui-tabs .skeux-tabs-nav-v li.ui-state-disabled a,
+.ui-tabs .skeux-tabs-nav-v li.ui-tabs-loading a {
 	cursor: text;
 }
-.ui-tabs .skeux-tabs-nav-vertical li a, /* first selector in group seems obsolete, but required to overcome bug in Opera applying cursor: text overall if defined elsewhere... */
-.ui-tabs-collapsible .skeux-tabs-nav-vertical li.ui-tabs-active a {
+.ui-tabs .skeux-tabs-nav-v li a, /* first selector in group seems obsolete, but required to overcome bug in Opera applying cursor: text overall if defined elsewhere... */
+.ui-tabs-collapsible .skeux-tabs-nav-v li.ui-tabs-active a {
 	cursor: pointer;
 }
 
 /* Slider marks */
-.skeux-slider-horizontal-wrapper,
-.skeux-slider-vertical-wrapper {
+.skeux-slider-h-wrapper,
+.skeux-slider-v-wrapper {
 	font-family: UbuntuC, "Arial Narrow", sans-serif;
 	font-size: 12px;
 	position: relative;
 }
-.skeux-slider-horizontal-wrapper { 
+.skeux-slider-h-wrapper { 
 	margin: 0.5em auto;
 	padding-bottom: 20px; 
 }
-.skeux-slider-vertical-wrapper { 
+.skeux-slider-v-wrapper { 
 	margin: 0.5em 0 0 0;
 	width: 48px;
 }
 
-.skeux-slider-horizontal-wrapper .skeux-slider-mark-min {
+.skeux-slider-h-wrapper .skeux-slider-mark-min {
 	background-image: url('skeux-images/slider-horizontal-ticks-888888.png');
 	background-position: -32px 0;
 	background-repeat: repeat-y;
@@ -91,7 +96,7 @@ h1, h2, h3, h4, h5, h6 {
 	text-align: center;
 	width: 32px;
 }
- .skeux-slider-vertical-wrapper .skeux-slider-mark-min {
+ .skeux-slider-v-wrapper .skeux-slider-mark-min {
 	background-image: url('skeux-images/slider-vertical-ticks-888888.png');
 	background-position: 0 -42px;
 	background-repeat: repeat-x;
@@ -101,7 +106,7 @@ h1, h2, h3, h4, h5, h6 {
 	text-align: left;
 	width: 25px;
 } 
-.skeux-slider-horizontal-wrapper .skeux-slider-mark-max {
+.skeux-slider-h-wrapper .skeux-slider-mark-max {
 	background-image: url('skeux-images/slider-horizontal-ticks-888888.png');
 	background-position: -32px 0;
 	background-repeat: repeat-y;
@@ -111,7 +116,7 @@ h1, h2, h3, h4, h5, h6 {
 	text-align: center;
 	width: 32px;
 }
-.skeux-slider-vertical-wrapper .skeux-slider-mark-max {
+.skeux-slider-v-wrapper .skeux-slider-mark-max {
 	background-image: url('skeux-images/slider-vertical-ticks-888888.png');
 	background-position: 0 -42px;
 	background-repeat: repeat-x;
@@ -121,7 +126,7 @@ h1, h2, h3, h4, h5, h6 {
 	text-align: left;
 	width: 25px;
 }
-.skeux-slider-horizontal-wrapper .skeux-slider-mark-tick {
+.skeux-slider-h-wrapper .skeux-slider-mark-tick {
 	background-image: url('skeux-images/slider-horizontal-ticks-888888.png');
 	background-position: 0 0;
 	position: absolute;
