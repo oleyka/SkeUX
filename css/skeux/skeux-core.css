@@ -32,43 +32,55 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Vertical tabs */
-.ui-tabs .skeux-tabs-nav-h {}
+.skeux-tabs-v {
+	padding: 4px;
+	position: relative;
+}
 
-.ui-tabs .skeux-tabs-nav-v {
+.skeux-tabs-v .ui-tabs-nav {
 	margin: .2em 0 .2em .2em;
 	padding: .2em 0 0 .2em;
 	position: absolute;
 	top: 0;
 	left: 0;
 }
-.ui-tabs .skeux-tabs-nav-v li {
+.skeux-tabs-v .ui-tabs-nav > li {
 	border-width: 1px;
 	border-right-width: 0;
 	clear: left;
+//	float: left; //
 	list-style: none;
 	margin: 0 0 .2em 0;
 	right: 0;
+//	padding: 0; //
 	position: relative;
+//	top: 0; //
 	white-space: nowrap;
 }
-.ui-tabs .skeux-tabs-nav-v li a {
+.skeux-tabs-v .ui-tabs-nav > li a {
 	display: block;
 	padding: .5em 1em;
 	text-decoration: none;
 }
-.ui-tabs .skeux-tabs-nav-v li.ui-tabs-active {
+.skeux-tabs-v .ui-tabs-nav > li.ui-tabs-active {
 	margin-right: -1px;
 	padding-right: 1px;
 }
-.ui-tabs .skeux-tabs-nav-v li.ui-tabs-active a,
-.ui-tabs .skeux-tabs-nav-v li.ui-state-disabled a,
-.ui-tabs .skeux-tabs-nav-v li.ui-tabs-loading a {
+.skeux-tabs-v .ui-tabs-nav > li.ui-tabs-active a,
+.skeux-tabs-v .ui-tabs-nav > li.ui-state-disabled a,
+.skeux-tabs-v .ui-tabs-nav > li.ui-tabs-loading a {
 	cursor: text;
 }
-.ui-tabs .skeux-tabs-nav-v li a, /* first selector in group seems obsolete, but required to overcome bug in Opera applying cursor: text overall if defined elsewhere... */
-.ui-tabs-collapsible .skeux-tabs-nav-v li.ui-tabs-active a {
+.skeux-tabs-v .ui-tabs-nav > li a, 
+.ui-tabs-collapsible .ui-tabs-nav > li.ui-tabs-active a {
 	cursor: pointer;
 }
+
+.skeux-tabs-v .ui-tabs-panel {
+	display: block;
+	border-width: 0;
+	padding: 1em 1.4em;
+	background: none;
 
 /* Slider marks */
 .skeux-slider-h-wrapper,

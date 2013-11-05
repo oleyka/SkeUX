@@ -1,39 +1,41 @@
 //		jQuery.ui.buttonset.prototype._init.call(this);
 
 // extension of jQuery buttonset widget, additional options:
-// align: { left, right, center }
-// 		default = center
-// orientation: { vertical, horizontal, default } 
+// align: { 'left', 'right', 'center' }
+// 		default = 'center'
+// orientation: { 'vertical', 'horizontal' }
 // 		default invokes the standard refresh() on _init
-// corners: { 'yes' / 'no' }
-// 		default = yes
-$.widget("ui.buttonset", jQuery.ui.buttonset, {
+// corners: { 'yes'/1, 'no'/0 }
+// 		default = 'yes'
+$.widget('ui.buttonset', jQuery.ui.buttonset, {
 	skeux_version: "0.0.1",
+	options: {
+		align: null,
+		orientation: null,
+		corners: 1
+	},
 
 	_create: function() {
-		switch(this.options.orientation) {
-		case 'vertical': 
-		case 'v': 
-			this.element.addClass('skeux-buttonset-v');
+		switch (this.options.orientation) {
+		case 'vertical':
+		case 'v':
 			this.options.orientation = 'vertical';
+			this.element.addClass('skeux-buttonset-v');
 			break;
 		case 'horizontal':
 		case 'h':
-			this.element.addClass('skeux-buttonset-h');
 			this.options.orientation = 'horizontal';
+			this.element.addClass('skeux-buttonset-h');
 			break;
 		default:
+			this.options.orientation = null;
 			this.element.addClass('ui-buttonset');
-			this.options.orientation = 'inherit';
 		}
-		switch(this.options.corners) { // just unifying
-		case 0:
-		case '0':
-		case 'no':
+
+		if (this.options.corners === 0 || 
+			this.options.corners === '0' ||
+			this.options.corners === 'no') {
 			this.options.corners = 0;
-			break;
-		default:
-			this.options.corners = 1;
 		}
 	},
 
@@ -49,8 +51,8 @@ $.widget("ui.buttonset", jQuery.ui.buttonset, {
 		}
 
 		if (this.options.align) { 
-			this.element.find( ".ui-button" )
-				.css('textAlign', this.options.align)
+			this.element.find( '.ui-button' )
+				.css('text-align', this.options.align)
 				.end(); 
 		}
 	},
@@ -60,7 +62,7 @@ $.widget("ui.buttonset", jQuery.ui.buttonset, {
 			rtl = this.element.css( "direction" ) === "rtl",
 			w;
 
-		switch(this.options.orientation) {
+		switch (this.options.orientation) {
 		case 'vertical':
 			this.buttons = this.element.find( this.options.items )
 				.filter( ":ui-button" )
@@ -72,7 +74,8 @@ $.widget("ui.buttonset", jQuery.ui.buttonset, {
 				.map(function() {
 					return $( this ).button( "widget" )[ 0 ];
 				})
-					.removeClass( "ui-corner-all ui-corner-left ui-corner-right ui-corner-top ui-corner-bottom" )
+					.removeClass( 'ui-corner-left ui-corner-right ' +
+						'ui-corner-top ui-corner-bottomi ui-corner-all' )
 					.addClass( 'skeux-buttonset-v-button' )
 					.filter( ":first" )
 						.addClass('skeux-buttonset-v-button-first')
@@ -86,7 +89,7 @@ $.widget("ui.buttonset", jQuery.ui.buttonset, {
 
 			w = skeux_max_width(this.element, '.ui-button-text');
 			this.element.find('.ui-button').width(w);
-			this.element.width(skeux_max_width(this.element, ':ui-button'));
+			this.element.width(skeux_max_width(this.element, '.ui-button'));
 			break;
 		case 'horizontal':
 			this.buttons = this.element.find( this.options.items )
@@ -112,9 +115,9 @@ $.widget("ui.buttonset", jQuery.ui.buttonset, {
 
 			w = skeux_max_width(this.element, '.ui-button-text');
 			this.element.find('.ui-button').width(w);
-//			this.element.width(skeux_max_width(this.element, ':ui-button'));
+			this.element.width(skeux_sum_width(this.element, '.ui-button'));
 			break;
-		default:
+		default: // just in case
 			jQuery.ui.buttonset.prototype.refresh.call(this);
 		}
 	},
@@ -125,7 +128,11 @@ $.widget("ui.buttonset", jQuery.ui.buttonset, {
 			.map(function() {
 				return $( this ).button( "widget" )[ 0 ];
 			})
-				.removeClass("ui-corner-left ui-corner-right ui-corner-top ui-corner-bottom skeux-buttonset-v-button skeux-buttonset-v-button-first skeux-buttonset-v-button-last skeux-buttonset-h-button skeux-buttonset-h-button first skeux-buttonset-h-button-last")
+				.removeClass("ui-corner-left ui-corner-right " +
+					"ui-corner-top ui-corner-bottom " +
+					"skeux-buttonset-v-button skeux-buttonset-v-button-first " +
+					"skeux-buttonset-v-button-last skeux-buttonset-h-button " + 
+					"skeux-buttonset-h-button-first skeux-buttonset-h-button-last")
 			.end()
 			.button( "destroy" );
 	}

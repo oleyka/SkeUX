@@ -7,7 +7,8 @@
 	<link href="css/skeux/skeux-core.css" rel="stylesheet">
 	<script src="js/jquery-1.9.1.js"></script>
 	<script src="js/jquery-ui-1.10.3.custom.js"></script>
-	<script src="js/skeux.buttonsetVertical.js"></script>
+	<script src="js/skeux.buttonset.js"></script>
+	<script src="js/skeux.tabs.js"></script>
 	<script src="js/skeux.js"></script>
 	<script>
 	$(function() {
@@ -94,13 +95,12 @@
 			}
 		);
 
-		$('#tabs_ux').tabs();
+		$('#tabs_ux').tabs({orientation: 'v', align: 'left'});
 		$( "#button_ux" ).button();
 		// SkeUX init for the vertical buttonset
 		$( "#radioset_ux" ).buttonset({
 			orientation: 'v',
-			align: 'right',
-			corners: 'no'
+			align: 'right'
 		});
 		$( "#radioset_ux2" ).buttonset({
 			orientation: 'h',
@@ -253,7 +253,7 @@
 </td><td>
 
 </td></tr>
-<tr><td>
+<tr class="not_now"><td>
 
 
 <!-- Button -->
@@ -295,7 +295,7 @@
 	</div>
 </form>
 </td></tr>
-<tr><td>
+<tr class="not_now"><td>
 
 
 <!-- Tabs -->
@@ -306,15 +306,15 @@
 		<li><a href="#tabs-2">Second</a></li>
 		<li><a href="#tabs-3">Third</a></li>
 	</ul>
-	<div id="tabs-1">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. And then some more, and more, and more... ....<br></div>
+	<div id="tabs-1">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </div>
 	<div id="tabs-2">Phasellus mattis tincidunt nibh. Cras orci urna, blandit id, pretium vel, aliquet ornare, felis. Maecenas scelerisque sem non nisl. Fusce sed lorem in enim dictum bibendum.</div>
 	<div id="tabs-3">Nam dui erat, auctor a, dignissim quis, sollicitudin eu, felis. Pellentesque nisi urna, interdum eget, sagittis et, consequat vestibulum, lacus. Mauris porttitor ullamcorper augue.</div>
 </div>
 
 </td><td>
 <h2 class="demoHeaders">Tabs</h2>
-<div id="tabs_ux" class="skeux-no-corners">
-	<ul class="skeux-tabs-nav-vertical">
+<div id="tabs_ux">
+	<ul>
 		<li><a href="#tabs-1ux">First</a></li>
 		<li><a href="#tabs-2ux">Second</a></li>
 		<li><a href="#tabs-3ux">Third</a></li>
@@ -541,7 +541,7 @@
 </td><td>
 
 </td></tr>
-<tr><td>
+<tr class="not_now"><td>
 
 <!-- Dial -->
 <h2 class="demoHeaders">Dial</h2>
