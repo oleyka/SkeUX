@@ -29,15 +29,19 @@ $.widget("ui.slider", jQuery.ui.slider, {
 			$(this.element).append('<div class="skeux-slider-mark-max">' + 
 				this.options.max + '</div>');
 			this.tickMark();
+			this.setResize();
 		}
 	},
 	// resize is not working
-	resize: function() {
-		console.log("resize!");
-		if (this.options.marks) {
-			this.element.remove('.skeux-slider-tick');
-			this.tickMark();
-		}
+	setResize: function() {
+		var that = this;
+		$(window).resize(function() {
+			if (that.options.marks) {
+				that.element.children('.skeux-slider-tick').remove();
+			// console.log("resize!", that.element.children());
+				that.tickMark();
+			}
+		});
 	},
 	tickMark: function() {
 		var min = this.options.min,
@@ -86,9 +90,6 @@ $.widget("ui.slider", jQuery.ui.slider, {
 			if (countMax > 0) {
 				dTick = stepTick * h / (max - min);
 			}
-
-console.log(h, hTick);
-console.log(countMax, dTick);
 
 			// one tick less than the amount of fragments
 			for (c = countMax; c > 1; c--) {
