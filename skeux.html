@@ -9,6 +9,7 @@
 	<script src="js/jquery-ui-1.10.3.custom.js"></script>
 	<script src="js/skeux.buttonset.js"></script>
 	<script src="js/skeux.tabs.js"></script>
+	<script src="js/skeux.slider.js"></script>
 	<script src="js/skeux.js"></script>
 	<script>
 	$(function() {
@@ -113,21 +114,25 @@
 		$( "#slider_ux1" ).slider({
 			range: true,
 			step: 10,
-			values: [ 17, 67 ]
+			orientation: 'vertical',
+			values: [ 17, 67 ],
+			marks: true
 		});
 		$( "#slider_ux2" ).slider({
 			range: false,
 			value: 40,
 			min: 0,
 			max: 50,
-			step: 2,
-			animate: true,
-			abracadabra: 'yes'
+			marks: true,
+			animate: true
 		});
 		$( "#slider_ux3" ).slider({
 			range: 'min',
-			step: 20,
+			step: 15,
+			orientation: 'vertical',
 			value: 60,
+			marks: true,
+			tick_step: 25,
 			animate: true
 		});
 		$( "#slider_ux4" ).slider({
@@ -135,7 +140,7 @@
 			min: 0,
 			max: 1,
 			step: 0.1,
-			orientation: 'vertical',
+			marks: true,
 			values: [0.2, 0.5]
 		});
 
@@ -560,10 +565,10 @@
 </td><td>
 <!-- Slider -->
 <h2 class="demoHeaders">Slider</h2>
-<div id="slider_ux1" class="skeux-slider-marks"></div>
-<div id="slider_ux2" class="skeux-slider-marks"></div>
-<div id="slider_ux3" class="skeux-slider-marks"></div>
-<div id="slider_ux4" class="skeux-slider-marks"></div>
+<div id="slider_ux1"></div>
+<div id="slider_ux2"></div>
+<div id="slider_ux3"></div>
+<div id="slider_ux4"></div>
 </td></tr>
 <tr class="not_now"><td>
 

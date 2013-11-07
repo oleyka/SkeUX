@@ -81,69 +81,69 @@ h1, h2, h3, h4, h5, h6 {
 	border-width: 0;
 	padding: 1em 1.4em;
 	background: none;
+}
 
 /* Slider marks */
-.skeux-slider-h-wrapper,
-.skeux-slider-v-wrapper {
+.ui-slider.skeux {
 	font-family: UbuntuC, "Arial Narrow", sans-serif;
 	font-size: 12px;
-	position: relative;
-}
-.skeux-slider-h-wrapper { 
-	margin: 0.5em auto;
-	padding-bottom: 20px; 
-}
-.skeux-slider-v-wrapper { 
-	margin: 0.5em 0 0 0;
-	width: 48px;
 }
 
-.skeux-slider-h-wrapper .skeux-slider-mark-min {
+.ui-slider-horizontal.skeux { 
+	height: 10px; 
+	margin: 0 auto 36px;
+}
+.ui-slider-vertical.skeux { 
+	margin: 1em 36px 1em 0;
+	width: 10px; 
+}
+
+.ui-slider-horizontal.skeux .skeux-slider-mark-min, 
+.ui-slider-horizontal.skeux .skeux-slider-mark-max,
+.ui-slider-horizontal.skeux .skeux-slider-tick {
 	background-image: url('skeux-images/slider-horizontal-ticks-888888.png');
+	position: absolute;
+	text-align: center;
+	width: 32px; overflow: visible;
+}
+.ui-slider-horizontal.skeux .skeux-slider-mark-min,
+.ui-slider-horizontal.skeux .skeux-slider-mark-max {
 	background-position: -32px 0;
 	background-repeat: repeat-y;
+	bottom: -20px;
+	height: 12px;
 	padding-top: 6px;
-	position: absolute;
-	left: -16px; bottom: 0;
-	text-align: center;
-	width: 32px;
 }
- .skeux-slider-v-wrapper .skeux-slider-mark-min {
-	background-image: url('skeux-images/slider-vertical-ticks-888888.png');
-	background-position: 0 -42px;
-	background-repeat: repeat-x;
-	padding-left: 8px;
-	position: absolute;
-	right: 0; bottom: -5px;
-	text-align: left;
-	width: 25px;
-} 
-.skeux-slider-h-wrapper .skeux-slider-mark-max {
-	background-image: url('skeux-images/slider-horizontal-ticks-888888.png');
-	background-position: -32px 0;
-	background-repeat: repeat-y;
-	padding-top: 6px;
-	position: absolute;
-	right: -15px; bottom: 0;
-	text-align: center;
-	width: 32px;
-}
-.skeux-slider-v-wrapper .skeux-slider-mark-max {
-	background-image: url('skeux-images/slider-vertical-ticks-888888.png');
-	background-position: 0 -42px;
-	background-repeat: repeat-x;
-	padding-left: 8px;
-	position: absolute;
-	right: 0; top: -5px;
-	text-align: left;
-	width: 25px;
-}
-.skeux-slider-h-wrapper .skeux-slider-mark-tick {
-	background-image: url('skeux-images/slider-horizontal-ticks-888888.png');
+.ui-slider-horizontal.skeux .skeux-slider-mark-min { left: -16px; }
+.ui-slider-horizontal.skeux .skeux-slider-mark-max { right: -16px; }
+.ui-slider-horizontal.skeux .skeux-slider-tick { 
 	background-position: 0 0;
+	bottom: -12px;
+	height: 8px;
+}
+
+.ui-slider-vertical.skeux .skeux-slider-mark-min,
+.ui-slider-vertical.skeux .skeux-slider-mark-max,
+.ui-slider-vertical.skeux .skeux-slider-tick {
+	background-image: url('skeux-images/slider-vertical-ticks-888888.png');
 	position: absolute;
-	bottom: 4px;
-	width: 32px; height: 12px;
+	text-align: left;
+	width: 32px; height: 12px; overflow: visible;
+}
+.ui-slider-vertical.skeux .skeux-slider-mark-min,
+.ui-slider-vertical.skeux .skeux-slider-mark-max {
+	background-position: 0 -42px;
+	background-repeat: repeat-x;
+	padding-left: 8px;
+	right: -42px;
+}
+
+.ui-slider-vertical.skeux .skeux-slider-mark-min { bottom: -5px; } 
+.ui-slider-vertical.skeux .skeux-slider-mark-max { top: -7px; }
+.ui-slider-vertical.skeux .skeux-slider-tick { 
+	background-position: 0 -10px;
+	right: -16px;
+	width: 11px;
 }
 
 /*** TEMP ***/

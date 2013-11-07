@@ -87,6 +87,6 @@ function skeux_parse_slider_marks() {
 }
 
 function skeux_parse_all() {
-	skeux_parse_slider_marks();
+//	skeux_parse_slider_marks();
 }
 
