@@ -79,7 +79,8 @@ function skeux_parse_slider_marks() {
 
 			while (c > 1) {
 				xTick = Math.round(dTick * (c - 1));
-				$(this).after('<div class="skeux-slider-mark-tick" style="left: ' + (xTick - 16) + 'px"></div>');
+				$(this).after('<div class="skeux-slider-mark-tick"' +
+					' style="left: ' + (xTick - 16) + 'px"></div>');
 			 	c--;
 			}
 		}

@@ -1,3 +1,8 @@
+h1, h2, h3, h4, h5, h6 {
+	font-weight: normal;
+	font-family: UbuntuR, Arial, sans-serif;
+}
+
 /* ditch jQuery's Verdana and Arial */
 .ui-widget,
 .ui-widget button {
@@ -12,75 +17,50 @@
 	font-family: UbuntuR, Arial, sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6 {
-	font-weight: normal;
-	font-family: UbuntuR, Arial, sans-serif;
-}
-
 /* Vertical buttonset */
-.skeux-buttonset-v .ui-button {
+.skeux-buttonset-v.skeux .ui-button {
 	display: block;
 	margin-bottom: -1px;
 }
-.skeux-buttonset-h .ui-button {
+.skeux-buttonset-h.skeux .ui-button {
 	display: inline-block;
 	margin-right: -4px;
 }
-.skeux-buttonset-h .ui-button .ui-button-text,
-.skeux-buttonset-v .ui-button .ui-button-text {
+.skeux-buttonset-h.skeux .ui-button .ui-button-text,
+.skeux-buttonset-v.skeux .ui-button .ui-button-text {
 	display: inline-block;
 }
 
 /* Vertical tabs */
-.skeux-tabs-v {
+.skeux-tabs-v.skeux {
 	padding: 4px;
-	position: relative;
 }
 
-.skeux-tabs-v .ui-tabs-nav {
+.skeux-tabs-v.skeux .ui-tabs-nav {
 	margin: .2em 0 .2em .2em;
 	padding: .2em 0 0 .2em;
 	position: absolute;
 	top: 0;
 	left: 0;
 }
-.skeux-tabs-v .ui-tabs-nav > li {
+.skeux-tabs-v.skeux .ui-tabs-nav > li {
 	border-width: 1px;
 	border-right-width: 0;
 	clear: left;
-//	float: left; //
-	list-style: none;
+	float: none;
 	margin: 0 0 .2em 0;
-	right: 0;
-//	padding: 0; //
-	position: relative;
-//	top: 0; //
-	white-space: nowrap;
+	right: 0; 
 }
-.skeux-tabs-v .ui-tabs-nav > li a {
+.skeux-tabs-v.skeux .ui-tabs-nav > li a {
 	display: block;
+	float: none;
 	padding: .5em 1em;
-	text-decoration: none;
 }
-.skeux-tabs-v .ui-tabs-nav > li.ui-tabs-active {
+.skeux-tabs-v.skeux .ui-tabs-nav > li.ui-tabs-active {
+	margin-bottom: auto;
+	padding-bottom: auto;
 	margin-right: -1px;
 	padding-right: 1px;
-}
-.skeux-tabs-v .ui-tabs-nav > li.ui-tabs-active a,
-.skeux-tabs-v .ui-tabs-nav > li.ui-state-disabled a,
-.skeux-tabs-v .ui-tabs-nav > li.ui-tabs-loading a {
-	cursor: text;
-}
-.skeux-tabs-v .ui-tabs-nav > li a, 
-.ui-tabs-collapsible .ui-tabs-nav > li.ui-tabs-active a {
-	cursor: pointer;
-}
-
-.skeux-tabs-v .ui-tabs-panel {
-	display: block;
-	border-width: 0;
-	padding: 1em 1.4em;
-	background: none;
 }
 
 /* Slider marks */

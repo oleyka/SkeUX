@@ -2,7 +2,7 @@
 
 /* Extension of jQuery slider widget
  * 
- * @method ui.slider
+ * @class ui.slider
  * @param {Boolean} marks Tickmarks, defaults to false.
  * @param {Number} tick_step If ommitted and marks == true, tick_step == step.
  *   If no step either, then tick_step is calculated based on min and max.
@@ -10,14 +10,20 @@
  *   defaults to false.
  * @param {Boolean} mark_initial Display a special mark at the initial 
  *   slider value
+ *
+ * @method _init Check for skeux-specific parameters
+ * @method setResize Sets a callback to execute when the window resizes
+ * // window vs element — how to do that?
+ * @method tickMark Calculate and draw the tick marks
  */
+
 $.widget("ui.slider", jQuery.ui.slider, {
 	skeux_version: "0.0.1",
 	options: {
 		marks: false,
 		mark_initial: false,
 		tick_step: null,
-		current: false,
+		current: false
 	},
 
 	_init: function() {
@@ -32,7 +38,6 @@ $.widget("ui.slider", jQuery.ui.slider, {
 			this.setResize();
 		}
 	},
-	// resize is not working
 	setResize: function() {
 		var that = this;
 		$(window).resize(function() {
@@ -54,7 +59,7 @@ $.widget("ui.slider", jQuery.ui.slider, {
 			wTick, hTick, dTick,
 			countMax, c;
 
-		switch(this.options.orientation) {
+		switch (this.options.orientation) {
 		case 'horizontal':
 			wTick = parseInt($el.find('.skeux-slider-mark-min').width());
 			countMax = Math.floor(w / wTick);
@@ -93,8 +98,10 @@ $.widget("ui.slider", jQuery.ui.slider, {
 
 			// one tick less than the amount of fragments
 			for (c = countMax; c > 1; c--) {
-				$el.append('<div class="skeux-slider-tick" ' + 
-					' style="bottom:' + parseInt(c * dTick - dTick - hTick / 2) + 'px"></div>');
+				$el.append('<div class="skeux-slider-tick"' + 
+					' style="bottom:' + 
+					parseInt(c * dTick - dTick - hTick / 2) + 
+					'px"></div>');
 			}
 			break;
 		default: ;

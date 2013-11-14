@@ -1,53 +1,43 @@
-//		jQuery.ui.buttonset.prototype._init.call(this);
+/* Extension of jQuery buttonset widget
+ * 
+ * @class ui.buttonset
+ * @param {String} align Alignment of text in the button
+ *   Available values: { 'left', 'right', 'center' }
+ * @param {String} orientation Buttonset orientation
+ *   Available values: { 'vertical', 'horizontal', null }
+ *   null value invokes the standard refresh() on _init
+ * @param {Boolean} corners Rounded corners, default == true
+ * 
+ * @method _init Apply skeux-specific parameters
+ * @method refresh_ux Replaces the original jQuery refresh 
+ * @method _destroy Replaces the original jQuery _destroy 
+ */
 
-// extension of jQuery buttonset widget, additional options:
-// align: { 'left', 'right', 'center' }
-// 		default = 'center'
-// orientation: { 'vertical', 'horizontal' }
-// 		default invokes the standard refresh() on _init
-// corners: { 'yes'/1, 'no'/0 }
-// 		default = 'yes'
 $.widget('ui.buttonset', jQuery.ui.buttonset, {
 	skeux_version: "0.0.1",
 	options: {
 		align: null,
 		orientation: null,
-		corners: 1
-	},
-
-	_create: function() {
-		switch (this.options.orientation) {
-		case 'vertical':
-		case 'v':
-			this.options.orientation = 'vertical';
-			this.element.addClass('skeux-buttonset-v');
-			break;
-		case 'horizontal':
-		case 'h':
-			this.options.orientation = 'horizontal';
-			this.element.addClass('skeux-buttonset-h');
-			break;
-		default:
-			this.options.orientation = null;
-			this.element.addClass('ui-buttonset');
-		}
-
-		if (this.options.corners === 0 || 
-			this.options.corners === '0' ||
-			this.options.corners === 'no') {
-			this.options.corners = 0;
-		}
+		corners: true
 	},
 
 	_init: function() {
-		if (this.options.orientation === 'vertical' ||
-			this.options.orientation === 'horizontal') {
+		switch (this.options.orientation) {
+		case 'vertical':
+			this.element.addClass('skeux skeux-buttonset-v');
 			this.refresh_ux();
-		} else {
+			break;
+		case 'horizontal':
+			this.element.addClass('skeux skeux-buttonset-h');
+			this.refresh_ux();
+			break;
+		default:
+			this.options.orientation = null;
 			this.refresh();
-			if (!this.options.corners) {
-				skeux_drop_corners(this.element);
-			}
+		}
+
+		if (!this.options.corners) {
+			skeux_drop_corners(this.element);
 		}
 
 		if (this.options.align) { 
@@ -74,15 +64,11 @@ $.widget('ui.buttonset', jQuery.ui.buttonset, {
 				.map(function() {
 					return $( this ).button( "widget" )[ 0 ];
 				})
-					.removeClass( 'ui-corner-left ui-corner-right ' +
-						'ui-corner-top ui-corner-bottomi ui-corner-all' )
-					.addClass( 'skeux-buttonset-v-button' )
+					.removeClass('ui-corner-all ui-corner-top ui-corner-bottom')
 					.filter( ":first" )
-						.addClass('skeux-buttonset-v-button-first')
 						.addClass( corners ? 'ui-corner-top' : '')
 					.end()
 					.filter( ":last" )
-						.addClass('skeux-buttonset-v-button-last')
 						.addClass( corners ? 'ui-corner-bottom' : '')
 					.end()
 				.end();
@@ -104,11 +90,9 @@ $.widget('ui.buttonset', jQuery.ui.buttonset, {
 				})
 					.removeClass( "ui-corner-all ui-corner-left ui-corner-right" )
 					.filter( ":first" )
-						.addClass('skeux-buttonset-h-button-first')
 						.addClass( rtl && corners ? "ui-corner-right" : "ui-corner-left" )
 					.end()
 					.filter( ":last" )
-						.addClass('skeux-buttonset-h-button-last')
 						.addClass( rtl && corners ? "ui-corner-left" : "ui-corner-right" )
 					.end()
 				.end();
@@ -117,22 +101,20 @@ $.widget('ui.buttonset', jQuery.ui.buttonset, {
 			this.element.find('.ui-button').width(w);
 			this.element.width(skeux_sum_width(this.element, '.ui-button'));
 			break;
-		default: // just in case
-			jQuery.ui.buttonset.prototype.refresh.call(this);
+		default:
 		}
 	},
 
 	_destroy: function() {
-		this.element.removeClass( "ui-buttonset skeux-buttonset-v skeux-buttonset-h");
+		this.element
+			.removeClass( "ui-buttonset" )
+			.removeClass('skeux skeux-buttonset-v skeux-buttonset-h');
 		this.buttons
 			.map(function() {
 				return $( this ).button( "widget" )[ 0 ];
 			})
 				.removeClass("ui-corner-left ui-corner-right " +
-					"ui-corner-top ui-corner-bottom " +
-					"skeux-buttonset-v-button skeux-buttonset-v-button-first " +
-					"skeux-buttonset-v-button-last skeux-buttonset-h-button " + 
-					"skeux-buttonset-h-button-first skeux-buttonset-h-button-last")
+					"ui-corner-top ui-corner-bottom ")
 			.end()
 			.button( "destroy" );
 	}
